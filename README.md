@@ -1,4 +1,4 @@
-# QRBeam
+# QRBeam 2
 
 QRBeam, dosyaları bir ekrandan diğer cihazın kamerasına hareketli QR kodlarla aktaran, tamamen istemci taraflı bir web uygulamasıdır. Dosya ve kamera görüntüsü hiçbir sunucuya gönderilmez.
 
@@ -6,14 +6,19 @@ QRBeam, dosyaları bir ekrandan diğer cihazın kamerasına hareketli QR kodlarl
 
 - Her tür dosyayı ham bayt olarak okuma
 - SHA-256 bütünlük doğrulaması
-- Sıralı ve döngüsel animasyonlu QR aktarımı
-- Kamera ile QR parçalarını toplama ve tekrarları ayıklama
+- Rateless XOR fountain sembolleriyle kayıp kare kurtarma
+- Her üç sembolde bir sistematik blok tekrarıyla garantili yeniden yakalama yolu
+- Güvenli, Dengeli, Hızlı ve Turbo aktarım profilleri (8–26 FPS)
+- 280–900 bayt ayarlanabilir QR payload kapasitesi
+- Kamera merkez kırpma, 1080p/60 FPS isteği ve 30 FPS kararlı çözümleme
+- Gerçek zamanlı goodput, çözülen blok, bozuk/tekrar kare ve yayın istatistikleri
+- Ekran uyanık tutma ve tam ekran QR modu
 - Dosyayı tarayıcıda yeniden oluşturup indirme
 - Mobil öncelikli koyu arayüz
 - PWA ve çevrimdışı önbellek
 - GitHub Pages için göreli dosya yolları
 
-> Bu, güvenilir bir teknik prototiptir. Sıralı QR kullandığı için küçük dosyalar önerilir. LT fountain code, ZXing WASM worker havuzu, IndexedDB gruplama, şifreleme ve optik ACK sonraki geliştirme aşamalarıdır.
+> Optik aktarımda fiziksel olarak hiçbir kare kaybı olmayacağı garanti edilemez. QRBeam kaçan kareleri yeni fountain sembolleri ve sistematik tekrarlarla telafi eder; dosyayı yalnızca SHA-256 özeti birebir eşleştiğinde başarılı kabul eder. Çok büyük dosyalar için IndexedDB gruplama, WASM çözümleyici ve optik ACK sonraki geliştirme aşamalarıdır.
 
 ## Yerelde çalıştırma
 
